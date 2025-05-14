@@ -1,2 +1,2 @@
 # skendel
-Programa para facilitar a analise de textos.
+Programa **INCOMPLETO** para facilitar a analise de textos. --> Protótipo.
