@@ -1,0 +1,11 @@
+para representar ">" ou "<", usa-se #>, #<
+
+
+#ASCII --> match de qualquer coisa que segue "#". || 
+til#ASCII --> match de quaisquer caracteres desconhecidos até ASCII.
+
+Match parcial
+n#ASCII --> match de qualquer n caracteres desconhecidos que nao estejam em ASCII.
+inf#ASCII --> match de quaisquer caracteres desconhecidos que nao estejam em ASCII.
+
+nDigit --> qualquer combinacao de n digitos
