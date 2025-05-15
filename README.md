@@ -5,9 +5,9 @@
 Funcionalidades implementadas:<br>
 
 <#Texto> --> Tenta encontrar qualquer coisa que seja identica a "texto" <br>
-<d?> --> Tenta encontrar uma sequencia de digitos de mesmo comprimento que as interrogações: <d??> = 12... | mnemônico: Digit<br>
-<u?> --> Tenta encontrar uma sequencia de letras de mesmo comprimento que as interrogações: <u???> = aBd... | mnemônico: Unknown<br> 
-<a?> --> Mesma coisa que os dois de cima, só que inclui tanto números e letras: <a?> = 0, a, Z | mnemônico: All<br>
+<d?> --> Tenta encontrar uma sequencia de digitos de mesmo comprimento que as interrogações: <d??> = 12...
+<u?> --> Tenta encontrar uma sequencia de letras de mesmo comprimento que as interrogações: <u???> = aBd... 
+<a?> --> Mesma coisa que os dois de cima, só que inclui tanto números e letras: <a?> = 0, a, Z...
 
 Exemplos:
 
