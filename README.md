@@ -23,4 +23,3 @@ Exemplos:
 
 
 (Nota: para representar **"# < >"** em <#Texto> põe-se um **"#"** antes: <#a##b#>> = a#b> )
-```
