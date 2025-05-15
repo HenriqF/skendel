@@ -8,7 +8,7 @@ janela.title("slk")
 
 def analise(exp, text):
     biblio = ""
-    with open("biblioteca.txt", "r") as file:
+    with open("biblioteca.txt", "r", encoding='utf-8') as file:
         biblio = ast.literal_eval(file.read())
 
     exp = " "+exp+" "
@@ -18,7 +18,11 @@ def analise(exp, text):
         if exp[i] == "<" and exp[i-1] != "#":
             rule = ""
             tkns = "#<>"
-            i += 1
+            if exp[i+1] == "#":
+                rule += "#"
+                i+=2
+            else:
+                i += 1
             while exp[i] != ">":
                 if exp[i] == "#" and exp[i+1] in tkns:
                     rule += exp[i+1]
@@ -31,12 +35,14 @@ def analise(exp, text):
 
     result = ""
     currentExp = ""
+
+
     sucessFlag = True
 
     j = -1
     i = 0
     ruleQ = []
-    while j <= len(text):
+    while j <= len(text) and i <= len(text):
         if ruleQ == []:
             if sucessFlag == False:
                 j += 1
@@ -45,22 +51,26 @@ def analise(exp, text):
             else:
                 j = i
                 result += currentExp
+                result += " "
             ruleQ = rules[:]
             currentExp = ""
         ruleC = ruleQ[0]
 
         if ruleC[0] == "#": #text match (qualquer coisa que vier depois de "#")
-            comprimento = len(ruleC[1:])
-            if text[i:i+comprimento] == ruleC[1:]:
-                currentExp+=text[i:i+comprimento]
-                i += comprimento-1
-            else:
-                currentExp = ""
-                ruleQ == []
-                sucessFlag = False
+            if ruleC != "#":
+                comprimento = len(ruleC[1:])
+                if text[i:i+comprimento] == ruleC[1:]:
+                    currentExp+=text[i:i+comprimento]
+                    i += comprimento-1
+                else:
+                    currentExp = ""
+                    ruleQ == []
+                    sucessFlag = False
 
-        if ruleC[0] in "duap": #digit/char match (n? que vier depois da letra)
-            compCharMap = biblio[1] if ruleC[0] == "d" else biblio[2] if ruleC == "u" else biblio[3] if ruleC == "a" else biblio[0] 
+        if ruleC[0] in "duapg": #digit/char match (n? que vier depois da letra)
+            idmap = {"p":0,"d":1,"u":2,"a":3,"g":4}
+            compCharMap = biblio[idmap[ruleC[0]]]
+
             comprimento = len(ruleC[1:])
             if comprimento > 0:
                 analise = text[i:i+comprimento]
@@ -79,21 +89,27 @@ def analise(exp, text):
 
         ruleQ.pop(0)
         i += 1
-    return(result)
+
+    return(text, result)
 
 
 ###############################################
+
+
 def enviar():
     user_text = text.get("1.0", tk.END).strip()
     user_exp = input.get("1.0", tk.END).strip()
     result = analise(user_exp, user_text)
     output.config(state=tk.NORMAL)
     output.delete("1.0", tk.END)
-    output.insert(tk.END, str(result))
+    output.insert(tk.END, str(result[1][1:]))
     janela.update()
 
 def atualizar(*args):
     enviar()
+
+def brilhe():
+    output.tag_add("h")
 
 #################################################################
 textoinput2 = tk.Label(janela, text="Resultado:")
@@ -110,6 +126,6 @@ text = tk.Text(janela, height=50, width=75)
 text.grid(row=1, column=1, padx=10, pady=10)
 text.bind("<KeyRelease>", atualizar)
 
-text.insert(tk.END, '1234av')
+text.insert(tk.END, 'Durante a reunião realizada na última #sexta-feira, foi decidido que o responsável técnico pelo #projeto será João Henrique da Silva, CPF 123.456.789-09, que já atuou em iniciativas semelhantes no passado. A equipe aprovou por unanimidade a sua indicação, destacando sua experiência e comprometimento com prazos. Além disso, definiu-se que todos os relatórios deverão ser entregues até às 18h00 de cada sexta-feira — sem exceções! Os formatos aceitos incluem: .pdf, .docx, e .xlsx; arquivos fora desses padrões serão rejeitados. Para dúvidas, os contatos disponíveis são: joao.henrique@empresa.com, suporte@projeto.org ou (11) 91234-5678. Ressaltou-se ainda que a identificação dos arquivos deverá seguir o padrão: nome_arquivo@data.extensão (exemplo: relatorio_final@15-05-2025.pdf). A diretoria alertou: “Atrasos recorrentes poderão gerar advertências formais — inclusive suspensão temporária das atividades!”')
 
 janela.mainloop()

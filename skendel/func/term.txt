@@ -1,11 +1,18 @@
-para representar ">" ou "<", usa-se #>, #<
+
+letras usadas: # d u a p
 
 
 #ASCII --> match de qualquer coisa que segue "#". || 
 d??? --> match de qualquer digito que segue "d".  || usa-se um "?" por digito.
 u??? --> match de qualquer caractere do alfabeto  || usa-se um "?" por letra.
-a??? --> match de qualquer caractere do alfabeto  || usa-se um "?" por letra.
+a??? --> match de qualquer caractere do alfabeto e numero || usa-se um "?" por letra.
 p??? --> match de qualquer pontuação || usa-se um "?" por letra.
+g??? --> match para literalmente qualquer coisa ascii.
+
+
+
+
+
 
 til#ASCII --> match de quaisquer caracteres desconhecidos até ASCII.
 
@@ -14,12 +21,3 @@ n#ASCII --> match de qualquer n caracteres desconhecidos que nao estejam em ASCI
 inf#ASCII --> match de quaisquer caracteres desconhecidos que nao estejam em ASCII.
 
 nDigit --> qualquer combinacao de n digitos
-
-
-
-
-Para todos os caracteres, rode todas as regras:
-
-<#E>        |
-            |
-TEXTO LEGAL | EE
