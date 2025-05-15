@@ -17,7 +17,7 @@ Exemplos:
 
 ![image](https://github.com/user-attachments/assets/eb77903c-89ee-409e-a2cb-6f08fa07a516)
 
-## Qualquer coisa seguida por virgula
+## Letra seguida por virgula
 
 ![image](https://github.com/user-attachments/assets/a78a0489-9e58-4ce3-a2e6-67c781ecf355)
 
