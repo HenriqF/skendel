@@ -9,6 +9,7 @@ Funcionalidades implementadas:<br>
 <u?> --> Tenta encontrar uma sequencia de letras de mesmo comprimento que as interrogações: <u???> = aBd...<br>
 <a?> --> Mesma coisa que os dois de cima, só que inclui tanto números e letras: <a?> = 0, a, Z...<br>
 <p?> --> Mesma coisa que os dois primeiros, só que tenta para pontuações: <p??> = .: -- !? etc<br>
+<g?> --> Tenta achar qualquer caractere.: <g???> = a0- ++3 ÁÁÁ ...<br>
 
 Exemplos:
 
