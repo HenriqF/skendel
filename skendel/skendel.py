@@ -6,12 +6,6 @@ janela.resizable(False, False)
 janela.geometry('1250x900')
 janela.title("slk")
 
-printchange = tk.BooleanVar()
-printchange.set(True)
-tabular = tk.BooleanVar()
-tabular.set(True)
-
-
 def analise(exp, text):
     biblio = ""
     with open("biblioteca.txt", "r") as file:
@@ -65,8 +59,8 @@ def analise(exp, text):
                 ruleQ == []
                 sucessFlag = False
 
-        if ruleC[0] in "dua": #digit/char match (n? que vier depois da letra)
-            compCharMap = biblio[0] if ruleC[0] == "d" else biblio[1] if ruleC == "u" else biblio[2]
+        if ruleC[0] in "duap": #digit/char match (n? que vier depois da letra)
+            compCharMap = biblio[1] if ruleC[0] == "d" else biblio[2] if ruleC == "u" else biblio[3] if ruleC == "a" else biblio[0] 
             comprimento = len(ruleC[1:])
             if comprimento > 0:
                 analise = text[i:i+comprimento]
@@ -75,7 +69,6 @@ def analise(exp, text):
                     if char in compCharMap:
                         analisado += char
                 
-                print(analisado, analise)
                 if analisado == analise:
                     currentExp+=text[i:i+comprimento]
                     i += comprimento-1

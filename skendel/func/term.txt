@@ -5,6 +5,7 @@ para representar ">" ou "<", usa-se #>, #<
 d??? --> match de qualquer digito que segue "d".  || usa-se um "?" por digito.
 u??? --> match de qualquer caractere do alfabeto  || usa-se um "?" por letra.
 a??? --> match de qualquer caractere do alfabeto  || usa-se um "?" por letra.
+p??? --> match de qualquer pontuação || usa-se um "?" por letra.
 
 til#ASCII --> match de quaisquer caracteres desconhecidos até ASCII.
 
