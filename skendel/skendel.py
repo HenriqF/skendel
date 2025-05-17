@@ -51,7 +51,7 @@ def analise(exp, text):
             else:
                 j = i
                 result += currentExp
-                result += " "
+                result += "\n"
             ruleQ = rules[:]
             currentExp = ""
         ruleC = ruleQ[0]
@@ -67,7 +67,7 @@ def analise(exp, text):
                     ruleQ == []
                     sucessFlag = False
 
-        if ruleC[0] in "duapg": #digit/char match (n? que vier depois da letra)
+        elif ruleC[0] in "duapg": #digit/char match (n? que vier depois da letra)
             idmap = {"p":0,"d":1,"u":2,"a":3,"g":4}
             compCharMap = biblio[idmap[ruleC[0]]]
 
@@ -83,6 +83,22 @@ def analise(exp, text):
                     currentExp+=text[i:i+comprimento]
                     i += comprimento-1
                 else:
+                    currentExp = ""
+                    ruleQ == []
+                    sucessFlag = False
+
+        elif ruleC[0] == "t": #till matches
+            matches = ruleC[4:]
+            if matches != "":
+                comprimento = len(matches)
+                k = i
+                while k <= len(text):
+                    if text[k:k+comprimento] == matches:
+                        currentExp+=text[i:k+comprimento]
+                        i += (k+comprimento-i)-1
+                        break
+                    k += 1
+                if text[k:k+comprimento] != matches:
                     currentExp = ""
                     ruleQ == []
                     sucessFlag = False

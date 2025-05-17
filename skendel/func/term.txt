@@ -1,5 +1,5 @@
 
-letras usadas: # d u a p
+letras usadas: # d u a p t
 
 
 #ASCII --> match de qualquer coisa que segue "#". || 
@@ -8,13 +8,10 @@ u??? --> match de qualquer caractere do alfabeto  || usa-se um "?" por letra.
 a??? --> match de qualquer caractere do alfabeto e numero || usa-se um "?" por letra.
 p??? --> match de qualquer pontuação || usa-se um "?" por letra.
 g??? --> match para literalmente qualquer coisa ascii.
+til#ASCII --> match de quaisquer caracteres desconhecidos até ASCII (incluindo ASCII).
 
 
 
-
-
-
-til#ASCII --> match de quaisquer caracteres desconhecidos até ASCII.
 
 Match parcial
 n#ASCII --> match de qualquer n caracteres desconhecidos que nao estejam em ASCII.
