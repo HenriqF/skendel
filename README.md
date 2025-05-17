@@ -4,12 +4,13 @@
 <br><br>
 Funcionalidades implementadas:<br>
 
-<#Texto> --> Tenta encontrar qualquer coisa que seja identica a "texto" <br>
+<#Texto> --> Tenta encontrar qualquer coisa que seja identica a "Texto" <br>
 <d?> --> Tenta encontrar uma sequencia de digitos de mesmo comprimento que as interrogações: <d??> = 12...<br>
 <u?> --> Tenta encontrar uma sequencia de letras de mesmo comprimento que as interrogações: <u???> = aBd...<br>
 <a?> --> Mesma coisa que os dois de cima, só que inclui tanto números e letras: <a?> = 0, a, Z...<br>
 <p?> --> Mesma coisa que os dois primeiros, só que tenta para pontuações: <p??> = .: -- !? etc<br>
 <g?> --> Tenta achar qualquer caractere.: <g???> = a0- ++3 ÁÁÁ ...<br>
+<til#Texto> --> Guarda tudo aquilo que fica antes de "Texto", junto com "Texto". <br>
 
 Exemplos:
 
