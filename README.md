@@ -12,7 +12,7 @@ Funcionalidades implementadas:<br>
 <g?> --> Tenta achar qualquer caractere.: <g???> = a0- ++3 ÁÁÁ ...<br>
 <til#Texto> --> Guarda tudo aquilo que fica antes de "Texto", junto com "Texto". <br>
 
-Exemplos:
+## Exemplos:
 
 ## Encontrar CPF
 
@@ -22,5 +22,8 @@ Exemplos:
 
 ![image](https://github.com/user-attachments/assets/a78a0489-9e58-4ce3-a2e6-67c781ecf355)
 
+## Encontrar conteúdo dentro de parenteses
+
+![image](https://github.com/user-attachments/assets/50874299-c843-4c92-a082-8a8a38669b82)
 
 (Nota: para representar **"# < >"** em <#Texto> põe-se um **"#"** antes: <#a##b#>> = a#b> )
