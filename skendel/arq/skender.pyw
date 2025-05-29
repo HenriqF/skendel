@@ -1,9 +1,14 @@
+import tkinter as tk
 import ast
-import time
+
+janela = tk.Tk()
+janela.resizable(False, False)
+janela.geometry('1250x900')
+janela.title("slk")
 
 def analise(exp, text):
     biblio = ""
-    with open("s/biblioteca.txt", "r", encoding='utf-8') as file:
+    with open("biblioteca.txt", "r", encoding='utf-8') as file:
         biblio = ast.literal_eval(file.read())
 
     exp = " "+exp+" "
@@ -34,14 +39,10 @@ def analise(exp, text):
 
     sucessFlag = True
 
-    leng = len(text)
-
     j = -1
     i = 0
     ruleQ = []
-
-    while j <= leng and i <= leng:
-
+    while j <= len(text) and i <= len(text):
         if ruleQ == []:
             if sucessFlag == False:
                 j += 1
@@ -91,7 +92,7 @@ def analise(exp, text):
             if matches != "":
                 comprimento = len(matches)
                 k = i
-                while k <= leng:
+                while k <= len(text):
                     if text[k:k+comprimento] == matches:
                         currentExp+=text[i:k+comprimento]
                         i += (k+comprimento-i)-1
@@ -107,52 +108,47 @@ def analise(exp, text):
 
     return(text, result)
 
-ans = ""
-text = ""
 
-filename = ""
+###############################################
 
 
-while (True):
-    store = False
-    exp = input(" --> ")
-    
-    if "<" not in exp:
-        if exp == "help":
-            
-            print("="*30)
-            print("Para saber comandos    : 1")
-            print("para saber analisadores: 2")
-            print("="*30)
+def enviar():
+    user_text = text.get("1.0", tk.END).strip()
+    user_exp = input.get("1.0", tk.END).strip()
+    result = analise(user_exp, user_text)
+    output.config(state=tk.NORMAL)
+    output.delete("1.0", tk.END)
+    output.insert(tk.END, str(result[1][1:]))
+    janela.update()
 
-            choice = input(" --> ")
-            if choice == "1":
-                print("="*30)
-                print("Para sair digite: /")
-                print("Para selecionar o arquivo txt a ser analisado digite seu nome sem a extensão: (analise.txt) --> analise")
-            elif choice == "2":
-                print("="*30)
-                with open("s/tutorial.txt", "r", encoding="utf-8") as tut:
-                    print(tut.read())
-            print("="*30)
+def atualizar(*args):
+    text = input.get("1.0", tk.END).strip()
+    text = text.replace("\n", "")
+    input.delete("1.0", tk.END)
+    input.insert(tk.END, text)
+    input.mark_set("insert", "1.0")
+    input.tag_remove("sel", "1.0", "end")
 
-        elif exp == "/":
-            break
-        else:
-            with open(f"{exp}.txt" , "r", encoding="utf-8") as f:
-                filename = f"{exp}Skended.txt"
-                text = f.read()
-    else:
-        if exp[0] == "w":
-            store = True
-            exp = exp[1:]
+    enviar()
 
-        curr = time.time()
-        ans = (analise(exp, text)[1])
-        print(f"\n{(time.time()-curr):.2f}s")
-        if store:
-            with open(filename, "w", encoding="utf-8") as o:
-                o.write(str(ans))
-        else:
-            print(ans)
+def brilhe():
+    output.tag_add("h")
 
+#################################################################
+textoinput2 = tk.Label(janela, text="Resultado:")
+textoinput2.grid(row=0, column=2, padx=10, pady=10)
+
+output = tk.Text(janela, height=50, width=75, state=tk.DISABLED)
+output.grid(row=1, column=2, padx=10, pady=10)
+
+input = tk.Text(janela, height=1, width=75)
+input.grid(row=0, column=1, padx=10, pady=10)
+input.bind("<Return>", atualizar)
+
+text = tk.Text(janela, height=50, width=75)
+text.grid(row=1, column=1, padx=10, pady=10)
+text.bind("<KeyRelease>", atualizar)
+
+text.insert(tk.END, 'Durante a reunião realizada na última #sexta-feira, foi decidido que o responsável técnico pelo #projeto será João Henrique da Silva, CPF 123.456.789-09, que já atuou em iniciativas semelhantes no passado. A equipe aprovou por unanimidade a sua indicação, destacando sua experiência e comprometimento com prazos. Além disso, definiu-se que todos os relatórios deverão ser entregues até às 18h00 de cada sexta-feira — sem exceções! Os formatos aceitos incluem: .pdf, .docx, e .xlsx; arquivos fora desses padrões serão rejeitados. Para dúvidas, os contatos disponíveis são: joao.henrique@empresa.com, suporte@projeto.org ou (11) 91234-5678. Ressaltou-se ainda que a identificação dos arquivos deverá seguir o padrão: nome_arquivo@data.extensão (exemplo: relatorio_final@15-05-2025.pdf). A diretoria alertou: “Atrasos recorrentes poderão gerar advertências formais — inclusive suspensão temporária das atividades!”')
+
+janela.mainloop()
