@@ -1,10 +1,13 @@
-import ast
 import time
 
 def analise(exp, text):
     biblio = ""
     with open("s/biblioteca.txt", "r", encoding='utf-8') as file:
-        biblio = ast.literal_eval(file.read())
+        conteudo = file.read().split("\n")
+        for i in range(0, len(conteudo)):
+            conteudo[i] = set(conteudo[i])
+
+        biblio = conteudo
 
     exp = " "+exp+" "
     rules = []
@@ -109,9 +112,7 @@ def analise(exp, text):
 
 ans = ""
 text = ""
-
 filename = ""
-
 
 while (True):
     store = False
@@ -155,4 +156,3 @@ while (True):
                 o.write(str(ans))
         else:
             print(ans)
-
